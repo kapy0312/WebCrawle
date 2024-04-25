@@ -1,3 +1,5 @@
+var google_apps_script_url = "https://script.google.com/macros/s/AKfycbzMPM5jHIcM1zoD595sLRtbfBlD25gZc797qk8cQMSwNXo5rjMxrV6UCynTy77hjEq_/exec";
+
 var DataObject;
 var textWithLink1, textWithLink12;
 
@@ -11,18 +13,52 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function triggerButtonClick() {
     // alert("                 ");
     DataObject = {};
+
+    var DataArray = new Array(100);
+    DataArray[0] = 1;
+
     $.ajax({
-        url: "/scraperData",
-        method: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(DataObject),
-        // data: formData, // 如果要发送 FormData，可以直接传递
+
+        //本地端Node.js
+        //----------------------------------------------------------
+        // url: "/scraperData",
+        // method: "POST",
+        // contentType: "application/json",
+        // data: JSON.stringify(DataObject),
+        // // data: formData, // 如果要发送 FormData，可以直接传递
+        // success: function (data) {
+
+        //透過GAS(google app script)進行讀取
+        //----------------------------------------------------------
+        url: google_apps_script_url,
+        type: 'POST',
+        dataType: 'text',
+        data: JSON.stringify({ DataArray: DataArray }),
+        contentType: 'text/plain; charset=utf-8',
         success: function (data) {
-            // resultDiv.innerText = "資料新增成功!\n" + JSON.stringify(data);
-            // var parseData = JSON.stringify(data);
-            // alert(parseData);
-            // var d1 = data[0];
-            // alert(parseData[0]);
+
+            var responseData = JSON.parse(data);
+
+            // 清空newsItems数组
+            // var newsItems = [];
+
+            // // 遍历解析后的数据并将其还原成newsItems数组中的对象
+            // for (var i = 0; i < responseData.length; i++) {
+            //     var item = responseData[i];
+            //     var title = item.title;
+            //     var link = item.link;
+            //     var time = item.time;
+
+            //     // 创建新闻对象并添加到newsItems数组中
+            //     var newsItem = {
+            //         title: title,
+            //         link: link,
+            //         time: time
+            //     };
+
+            //     // 添加到newsItems数组中
+            //     newsItems.push(newsItem);
+            // }
 
             $('#item-title1').text('自由時報-即時新聞');
             $('#item-image1').attr('href', 'img/icon_LTN.png');
@@ -59,7 +95,7 @@ function triggerButtonClick() {
             $('#item-image7 img').attr('src', 'img/icon_PTS.png');
             $('#item-content7').html('');
 
-            data.forEach(newsItem => {
+            responseData.forEach(newsItem => {
 
                 if (newsItem.title.includes("自由時報") && newsItem.time != "" && newsItem.link != "") {
 
