@@ -80,7 +80,7 @@ function triggerButtonClick() {
             $('#item-image4 img').attr('src', 'img/icon_EBC.png');
             $('#item-content4').html('');
 
-            $('#item-title5').text('ETtoday新聞-即時新聞');
+            $('#item-title5').text('ETtoday-即時新聞');
             $('#item-image5').attr('href', 'img/icon_ETtoday.png');
             $('#item-image5 img').attr('src', 'img/icon_ETtoday.png');
             $('#item-content5').html('');
