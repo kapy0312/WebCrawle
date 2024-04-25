@@ -209,6 +209,8 @@ function triggerButtonClick() {
                     return;
                 }
             });
+
+            $('#overlay').hide();
         },
         error: function (error) {
             console.error("Error:", error);
