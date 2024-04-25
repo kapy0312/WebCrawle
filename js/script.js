@@ -81,8 +81,8 @@ function triggerButtonClick() {
             $('#item-content4').html('');
 
             $('#item-title5').text('ETtoday-即時新聞');
-            $('#item-image5').attr('href', 'img/icon_ETtoday.png');
-            $('#item-image5 img').attr('src', 'img/icon_ETtoday.png');
+            $('#item-image5').attr('href', 'img/icon_Ettoday.png');
+            $('#item-image5 img').attr('src', 'img/icon_Ettoday.png');
             $('#item-content5').html('');
 
             $('#item-title6').text('中央社CNA-即時新聞');
