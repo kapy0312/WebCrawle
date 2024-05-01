@@ -1,4 +1,4 @@
-var google_apps_script_url = "https://script.google.com/macros/s/AKfycbzMPM5jHIcM1zoD595sLRtbfBlD25gZc797qk8cQMSwNXo5rjMxrV6UCynTy77hjEq_/exec";
+var google_apps_script_url = "https://script.google.com/macros/s/AKfycbyxSDkuts1SBejcQ3VdA2dqjmByu_wv7IdqrPYJmeUpHAyxdqIk0XyS7pxiqG6QN8_I/exec";
 
 var DataObject;
 var textWithLink1, textWithLink12;
@@ -75,9 +75,14 @@ function triggerButtonClick() {
             $('#item-image3 img').attr('src', 'img/icon_APPLE.png');
             $('#item-content3').html('');
 
-            $('#item-title4').text('東森新聞-即時新聞');
-            $('#item-image4').attr('href', 'img/icon_EBC.png');
-            $('#item-image4 img').attr('src', 'img/icon_EBC.png');
+            // $('#item-title4').text('東森新聞-即時新聞');
+            // $('#item-image4').attr('href', 'img/icon_EBC.png');
+            // $('#item-image4 img').attr('src', 'img/icon_EBC.png');
+            // $('#item-content4').html('');
+
+            $('#item-title4').text('奇摩新聞-即時新聞');
+            $('#item-image4').attr('href', 'img/icon_YAHOO.png');
+            $('#item-image4 img').attr('src', 'img/icon_YAHOO.png');
             $('#item-content4').html('');
 
             $('#item-title5').text('ETtoday-即時新聞');
@@ -145,7 +150,23 @@ function triggerButtonClick() {
                     return;
                 }
 
-                if (newsItem.title.includes("東森新聞") && newsItem.time != "" && newsItem.link != "") {
+                // if (newsItem.title.includes("東森新聞") && newsItem.time != "" && newsItem.link != "") {
+
+                //     textWithLink1 = $('<a>').attr({
+                //         href: newsItem.link,
+                //         target: '_blank'
+                //     }).text(newsItem.time).css('color', 'black');
+
+                //     textWithLink2 = $('<a>').attr({
+                //         href: newsItem.link,
+                //         target: '_blank'
+                //     }).text(newsItem.title.replace('東森新聞-', '')).css('color', 'black');
+
+                //     $('#item-content4').append(textWithLink1, '<br>', textWithLink2, '<br><br>');
+                //     return;
+                // }
+
+                if (newsItem.title.includes("奇摩新聞") && newsItem.time != "" && newsItem.link != "") {
 
                     textWithLink1 = $('<a>').attr({
                         href: newsItem.link,
@@ -155,7 +176,7 @@ function triggerButtonClick() {
                     textWithLink2 = $('<a>').attr({
                         href: newsItem.link,
                         target: '_blank'
-                    }).text(newsItem.title.replace('東森新聞-', '')).css('color', 'black');
+                    }).text(newsItem.title.replace('奇摩新聞-', '')).css('color', 'black');
 
                     $('#item-content4').append(textWithLink1, '<br>', textWithLink2, '<br><br>');
                     return;
